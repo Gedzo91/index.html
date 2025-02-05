@@ -1,0 +1,79 @@
+
+:root {
+    --primary: hsl(274, 38%, 40%);
+    --secondary: hsl(75, 40%, 51%);
+    --accent: hsl(136, 40%, 61%);
+    --text: var(--primary);
+    --bg: var(--secondary);
+    --spacing: 7px;
+    --radius: 4px;
+    --shadow: 3px 5px 9px 5px rgba(0,0,0,0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: linear-gradient(147deg, var(--primary), var(--secondary));
+    color: var(--text);
+    font-family: 'Georgia', serif;
+    line-height: 1,5;
+    background-image: linear-gradient(45deg, var(--primary) 25%, transparent 25%), linear-gradient(-45deg, var(--primary) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--primary) 75%), linear-gradient(-45deg, transparent 75%, var(--primary) 75%);
+}
+
+.page-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing);
+    padding: 19px;
+}
+
+.header {
+    grid-column: 1 / -1;
+}
+
+.main-content {
+    grid-column: 2 / -2;
+}
+
+.footer {
+    grid-column: 1 / -1;
+}
+
+
+.header {
+    background: var(--primary);
+    padding: 26px;
+    clip-path: circle(98% at 50% 50%);
+    text-align: center;
+}
+
+.content-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 27px;
+}
+
+.content-block {
+    background: linear-gradient(328deg, var(--primary), var(--secondary));
+    padding: 36px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border: 2px solid var(--accent);
+}
+
+.content-block:hover {
+    transform: rotate(2deg);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-11px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0,99); }
+}
