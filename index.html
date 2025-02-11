@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duolingo Clone</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="main-content">
+      <div id="language-selector" class="modal">
+        <div class="modal-content">
+          <div class="mascot">
+            <img src="Duolingo.png" alt="Duo the owl" width="120">
+          </div>
+          <h2 data-i18n="select-interface-language">Select your language</h2>
+          <div class="language-grid">
+            <button class="interface-language-option" data-lang="en">
+              <div class="flag">🇬🇧</div>
+              <h3 data-i18n="english">English</h3>
+            </button>
+            <button class="interface-language-option" data-lang="es">
+              <div class="flag">🇪🇸</div>
+              <h3 data-i18n="spanish">Spanish</h3>
+            </button>
+            <button class="interface-language-option" data-lang="fr">
+              <div class="flag">🇫🇷</div>
+              <h3 data-i18n="french">French</h3>
+            </button>
+            <button class="interface-language-option" data-lang="de">
+              <div class="flag">🇩🇪</div>
+              <h3 data-i18n="german">German</h3>
+            </button>
+            <button class="interface-language-option" data-lang="it">
+              <div class="flag">🇮🇹</div>
+              <h3 data-i18n="italian">Italian</h3>
+            </button>
+            <button class="interface-language-option" data-lang="pt">
+              <div class="flag">🇵🇹</div>
+              <h3 data-i18n="portuguese">Portuguese</h3>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="home-screen" class="hidden">
+        <h1 data-i18n="choose-language">Choose a language to learn</h1>
+        <div class="language-grid">
+          <button class="language-option" data-lang="en">
+            <div class="flag">🇬🇧</div>
+            <h3 data-i18n="english">English</h3>
+          </button>
+          <button class="language-option" data-lang="es">
+            <div class="flag">🇪🇸</div>
+            <h3 data-i18n="spanish">Spanish</h3>
+          </button>
+          <button class="language-option" data-lang="fr">
+            <div class="flag">🇫🇷</div>
+            <h3 data-i18n="french">French</h3>
+          </button>
+          <button class="language-option" data-lang="de">
+            <div class="flag">🇩🇪</div>
+            <h3 data-i18n="german">German</h3>
+          </button>
+          <button class="language-option" data-lang="it">
+            <div class="flag">🇮🇹</div>
+            <h3 data-i18n="italian">Italian</h3>
+          </button>
+          <button class="language-option" data-lang="pt">
+            <div class="flag">🇵🇹</div>
+            <h3 data-i18n="portuguese">Portuguese</h3>
+          </button>
+        </div>
+      </div>
+
+      <div id="levels-screen" class="hidden">
+        <header>
+          <button id="back-to-languages" data-i18n="back-to-languages">← Back to Languages</button>
+          <h2 id="selected-language"></h2>
+        </header>
+        
+        <div class="levels-container">
+          <div class="stage">
+            <h3 data-i18n="basic-stage">Basic Stage</h3>
+            <div class="level-grid" id="basic-levels"></div>
+          </div>
+          
+          <div class="stage">
+            <h3 data-i18n="intermediate-stage">Intermediate Stage</h3>
+            <div class="level-grid" id="intermediate-levels"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="game-screen" class="hidden">
+        <header>
+          <div class="progress-bar" aria-label="Progress">
+            <div id="progress"></div>
+          </div>
+          <div class="hearts" aria-label="Hearts remaining">
+            <span>❤️</span>
+            <span>❤️</span>
+            <span>❤️</span>
+          </div>
+        </header>
+
+        <main>
+          <div id="question-container">
+            <h2 id="prompt"></h2>
+            <div id="options"></div>
+            <img id="duolingo-png" src="Duolingo.png" alt="Duo the owl" width="120" style="display: none;">
+            <img id="lily-png" src="Lily.png" alt="Lily" width="120" style="display: none;">
+          </div>
+
+          <div id="result" class="hidden">
+            <h2></h2>
+            <button id="continue" data-i18n="continue">Continue</button>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="league-panel">
+        <!-- League content will be dynamically inserted here -->
+      </div>
+      <div id="leaderboard">
+        <!-- Leaderboard content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
