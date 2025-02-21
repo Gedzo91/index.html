@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Generated Page</title>
+    <link rel='icon' type='image/x-icon' href='favicon.ico'>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+<body>
+    <div class='page-container'>
+        <header class='header'><button id="community-back-button" class="back-button">← Back to Menu</button><h2 class="recent-chats-title">Community Characters</h2></header>
+        <main class='main-content'>
+            <div class='hero-section'><h2>👋 Welcome to Club Cosiwi!</h2><div class="rules-list"><p>Hey there! Here are some quick rules to keep our virtual hangout awesome:</p><ul><li>💬 Keep chat friendly and respectful</li><li>💖 Be kind to fellow players</li><li>🎮 Have fun and make friends!</li><li>🔇 Use the mute button to manage your experience</li></ul><div class="mute-info"><h3>Managing Your Experience</h3><p>If someone's behavior is bothering you:</p><ul><li>Click the 🔇 button in the bottom left to see all players</li><li>Use the mute button next to a player's name to hide them</li><li>Unmute them anytime to see them again</li></ul></div><p class="report-note">While advanced moderation features are work-in-progress, please use the mute button if someone is bothering you. For serious issues, take a screenshot and report in the Stupid-Looking Games Discord: <a href="https://discord.gg/6UaSAF6qMr" target="_blank">discord.gg/6UaSAF6qMr</a></p></div><button id="welcome-close">Got it!</button></div>
+            <div class='content-section'><div class='content-block'><h2>Commands</h2><button class="command-button" onclick="initiateCompleteCollapse()"><i class="fas fa-bomb"></i> Complete Collapse
+    <span class="warning-text">MIGHT NOT WORK ON FORMABLE EMPIRES</span></button><button class="command-button" onclick="resetMap()"><i class="fas fa-undo"></i> Reset Map
+  </button><button class="command-button" onclick="triggerRandomWar()"><i class="fas fa-dice"></i> Random War
+  </button><button class="command-button" onclick="toggleEmpireOptions()"><i class="fas fa-crown"></i> Form Empire
+  </button><div class="empire-options"><div class="empire-option" onclick="formEmpire('Arab League')">Arab League</div><div class="empire-option" onclick="formEmpire('Soviet Union')">Soviet Union</div><div class="empire-option" onclick="formEmpire('BRICS')">BRICS</div><div class="empire-option" onclick="formEmpire('Russian Empire')">Russian Empire</div><div class="empire-option" onclick="formEmpire('British Empire')">British Empire</div><div class="empire-option" onclick="formEmpire('French Empire')">French Empire</div><div class="empire-option" onclick="formEmpire('Qing Dynasty')">Qing Dynasty</div><div class="empire-option" onclick="formEmpire('African Union')">African Union</div></div></div>
+<div class='content-block'><h2>Settings</h2><div class="setting-item"><label class="setting-label">Independence Movements</label><label class="toggle-switch"><input type="checkbox" id="independence-toggle" checked onchange="updateSettings()"><span class="toggle-slider"></span></label></div><div class="setting-item"><label class="setting-label">Aggressiveness</label><input type="range" class="setting-slider" id="aggression-slider" min="1" max="10" value="1" onchange="updateSettings()"></div><div class="setting-item"><button class="setting-button" onclick="regenerateColors()">
+      Reset Colors
+    </button></div></div>
+<div class='content-block'><h1>Weapon Library</h1><div class="library-controls"><input type="text" id="weaponSearch" placeholder="Search weapons by name, description, abilities..." class="weapon-search"><div class="sort-controls"><select id="sortBy"><option value="rarity-desc">Rarity (High to Low)</option><option value="rarity-asc">Rarity (Low to High)</option><option value="name">Name (A-Z)</option><option value="name-desc">Name (Z-A)</option><option value="newest">Newest First</option><option value="oldest">Oldest First</option><option value="damage-desc">Damage (High to Low)</option><option value="damage-asc">Damage (Low to High)</option></select></div></div><div id="weaponLibrary"></div></div></div>
+            <div class='features-section'><h3>Top Relations</h3></div>
+        </main>
+        <footer class='footer'><label>Spacing <span class="value spacing-value">30</span></label><input type="range" class="spacing-slider" min="10" max="100" value="30"></footer>
+    </div>
+</body>
+</html>
