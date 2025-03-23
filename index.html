@@ -1,0 +1,256 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Iceberg Maker</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('/iceberg.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh
+    }
+
+    .overlay {
+      background: rgba(0, 0, 50, 0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 50px 20px
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+    }
+
+    p {
+      font-size: 18px
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0
+    }
+
+    .button-group input[type="text"], .action-button {
+      height: 40px
+    }
+
+    .action-button {
+      padding: 0 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      color: black;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: normal;
+      height: 40px;
+      line-height: 40px
+    }
+
+    .action-button:hover {
+      background: rgba(255, 255, 255, 0.7)
+    }
+
+    .action-button.generating {
+      background: linear-gradient(90deg, #ff0000, #ff9900, #33cc33, #00ccff, #9933ff);
+      background-size: 300% 300%;
+      animation: rainbowShimmer 2s linear infinite;
+      color: blue;
+      font-weight: bold
+    }
+
+    .progress-bar {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+      height: 10px;
+      margin: 10px 0;
+      position: relative
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff0000, #ff9900, #33cc33, #00ccff, #9933ff);
+      background-size: 300% 300%;
+      animation: rainbowShimmer 2s linear infinite;
+      transition: width 0.3s
+    }
+
+    .iceberg-chart {
+      margin: 50px auto;
+      width: 90%;
+      max-width: 800px;
+      text-align: left
+    }
+
+    .level {
+      margin-bottom: 20px;
+      overflow: hidden;
+      animation: slideOpen 0.8s ease-out forwards
+    }
+
+    .level-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-decoration: underline;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
+    }
+
+    .entries {
+      list-style: none;
+      padding: 0
+    }
+
+    .entries li {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      transition: all 0.3s;
+      cursor: pointer;
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s forwards
+    }
+
+    .entries li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.02)
+    }
+
+    .entries li:nth-child(1) {
+      animation-delay: 0.1s
+    }
+
+    .entries li:nth-child(2) {
+      animation-delay: 0.2s
+    }
+
+    .entries li:nth-child(3) {
+      animation-delay: 0.3s
+    }
+
+    .panel-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+      background: rgba(0, 0, 0, 0.5);
+      margin-top: 10px;
+      border-radius: 5px;
+      padding: 0 15px;
+      color: #fff
+    }
+
+    .panel-content.active {
+      max-height: 5000px;
+      padding: 15px
+    }
+
+    img.float-left {
+      float: left;
+      margin-right: 20px
+    }
+
+    h3 {
+      margin-top: 0
+    }
+
+    p {
+      color: #fff
+    }
+
+    @keyframes rainbowShimmer {
+      0% {
+        background-position: 0% 50%
+      }
+      100% {
+        background-position: 100% 50%
+      }
+    }
+
+    @keyframes slideOpen {
+      from {
+        max-height: 0;
+        opacity: 0;
+        transform: translateX(-20px)
+      }
+      to {
+        max-height: 5000px;
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Iceberg Maker</h1>
+    <p>Customize your iceberg chart:</p>
+    <div class="controls">
+      <div class="topic-selector">
+        <label>Topic Type:</label>
+        <select id="topicType">
+          <option value="custom">Custom</option>
+          <option value="mystery">Mystery</option>
+          <option value="danger">Danger</option>
+        </select>
+      </div>
+      <div class="level-selector">
+        <label>Number of Levels:</label>
+        <input type="number" id="levelCount" min="3" max="7" value="5">
+      </div>
+    </div>
+    <div class="button-group">
+      <input type="text" id="categoryInput" placeholder="Enter your topic...">
+      <button id="generateBtn" class="action-button">Generate</button>
+      <button id="downloadBtn" class="action-button">Download All</button>
+    </div>
+    <div id="progressBarContainer" class="progress-bar">
+      <div id="progressBar" class="progress"></div>
+    </div>
+    <div id="icebergChart" class="iceberg-chart"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script type="module" src="scripts.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "jszip": "https://cdn.jsdelivr.net/npm/jszip@3.10.1/+esm"
+    }
+  }
+  </script>
+</body>
+</html>
